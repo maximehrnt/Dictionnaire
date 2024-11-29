@@ -368,7 +368,7 @@ st.title("Dictionnaire de Données")
 placeholder_text = "Saisissez un terme ou choisissez dans la liste"
 mots_suggérés = sorted(dictionnaire.keys())  # Liste triée des mots
 selection = st.selectbox(
-    "Suggestions :", 
+    "Comment puis je vous aider ? :", 
     options=[""] + mots_suggérés,  # Ajout d'une option vide par défaut
     format_func=lambda x: x if x else placeholder_text  # Texte affiché si rien n'est sélectionné
 )
