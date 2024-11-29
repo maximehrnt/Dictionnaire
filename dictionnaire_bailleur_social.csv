@@ -1,0 +1,59 @@
+mot,definition,Responsable donnée,Origine de la donnée,Source référence
+Logement,Unité d'habitation destinée à être occupée par une ou plusieurs personnes.,Patrimoine,Gestionnaire Secteur,Ulis
+Locataire,Personne qui occupe un logement contre paiement d'un loyer.,Patrimoine,Gestionnaire Secteur,Ulis
+Loyer,Somme d'argent versée périodiquement par le locataire au propriétaire.,Patrimoine,Gestionnaire Secteur,Ulis
+Bail,Contrat qui lie un locataire et un propriétaire pour un logement.,Patrimoine,Gestionnaire Secteur,Ulis
+Quittance,Reçu délivré pour attester du paiement d'un loyer.,Patrimoine,Gestionnaire Secteur,Ulis
+Caution,Somme d'argent déposée en garantie au début d'un bail.,Patrimoine,Gestionnaire Secteur,Ulis
+Charges,"Coût des services associés au logement (eau, chauffage, etc.).",Patrimoine,Gestionnaire Secteur,Ulis
+Immeuble,Bâtiment regroupant plusieurs logements.,Patrimoine,Gestionnaire Secteur,Ulis
+Résidence,Ensemble de logements regroupés en une même localisation.,Patrimoine,Gestionnaire Secteur,Ulis
+Appartement,Logement composé de plusieurs pièces dans un immeuble.,Patrimoine,Gestionnaire Secteur,Ulis
+Studio,Petit appartement d'une seule pièce avec commodités.,Patrimoine,Gestionnaire Secteur,Ulis
+T1,"Appartement avec une chambre à coucher, salon et cuisine.",Patrimoine,Gestionnaire Secteur,Ulis
+T2,"Appartement avec deux chambres à coucher, salon et cuisine.",Patrimoine,Gestionnaire Secteur,Ulis
+T3,"Appartement avec trois chambres à coucher, salon et cuisine.",Patrimoine,Gestionnaire Secteur,Ulis
+T4,"Appartement avec quatre chambres à coucher, salon et cuisine.",Patrimoine,Gestionnaire Secteur,Ulis
+T5,"Appartement avec cinq chambres à coucher, salon et cuisine.",Patrimoine,Gestionnaire Secteur,Ulis
+T6,"Appartement avec six chambres à coucher, salon et cuisine.",Patrimoine,Gestionnaire Secteur,Ulis
+Maison,Logement individuel souvent destiné à une seule famille.,Patrimoine,Gestionnaire Secteur,Ulis
+Villa,Maison de standing généralement entourée d'un jardin.,Patrimoine,Gestionnaire Secteur,Ulis
+Loft,Logement atypique souvent aménagé dans un ancien bâtiment industriel.,Patrimoine,Gestionnaire Secteur,Ulis
+Garage,Espace couvert destiné au stationnement d'un véhicule.,Patrimoine,Gestionnaire Secteur,Ulis
+Parking,Espace ouvert ou couvert destiné au stationnement.,Patrimoine,Gestionnaire Secteur,Ulis
+Terrain,Terrain destiné à la construction d'un logement ou autre.,Patrimoine,Gestionnaire Secteur,Ulis
+Lotissement,Ensemble de terrains ou bâtiments regroupés pour être aménagés.,Patrimoine,Gestionnaire Secteur,Ulis
+Syndic,Organisme en charge de la gestion d'un immeuble.,Patrimoine,Gestionnaire Secteur,Ulis
+Co-propriété,Propriété partagée entre plusieurs copropriétaires.,Patrimoine,Gestionnaire Secteur,Ulis
+Entretien,Action de maintenir un bâtiment ou équipement en bon état.,Patrimoine,Gestionnaire Secteur,Ulis
+Réhabilitation,Travaux visant à remettre un bâtiment en bon état.,Patrimoine,Gestionnaire Secteur,Ulis
+Rénovation,Travaux destinés à moderniser un bâtiment.,Patrimoine,Gestionnaire Secteur,Ulis
+Démolition,Action de détruire un bâtiment ou une structure.,Patrimoine,Gestionnaire Secteur,Ulis
+Construction,Action de bâtir une structure ou un bâtiment.,Patrimoine,Gestionnaire Secteur,Ulis
+Urbanisme,Discipline qui organise l'utilisation des sols et des espaces.,Patrimoine,Gestionnaire Secteur,Ulis
+Aménagement,Action de modifier ou structurer un espace urbain ou rural.,Patrimoine,Gestionnaire Secteur,Ulis
+Concession,Contrat ou accord pour l'utilisation d'un espace ou bien.,Patrimoine,Gestionnaire Secteur,Ulis
+Prêt locatif,Crédit spécifique pour financer la location d'un logement.,Patrimoine,Gestionnaire Secteur,Ulis
+Subvention,Aide financière accordée pour soutenir un projet de logement.,Patrimoine,Gestionnaire Secteur,Ulis
+ANAH,"Agence Nationale de l'Habitat, dédiée à l'amélioration des logements.",Patrimoine,Gestionnaire Secteur,Ulis
+CAF,"Caisse d'Allocations Familiales, apportant des aides financières.",Patrimoine,Gestionnaire Secteur,Ulis
+APL,Aide personnalisée au logement pour réduire le coût du loyer.,Patrimoine,Gestionnaire Secteur,Ulis
+PLAI,Prêt Locatif Aidé d'Intégration pour financer le logement social.,Patrimoine,Gestionnaire Secteur,Ulis
+PLS,Prêt Locatif Social pour logements intermédiaires.,Patrimoine,Gestionnaire Secteur,Ulis
+PLU,Plan Local d'Urbanisme définissant les règles de construction.,Patrimoine,Gestionnaire Secteur,Ulis
+Assurance,Contrat assurant contre les risques pour un logement.,Patrimoine,Gestionnaire Secteur,Ulis
+Défiscalisation,Avantage fiscal accordé pour investir dans l'immobilier.,Patrimoine,Gestionnaire Secteur,Ulis
+Investissement locatif,Action de placer de l'argent dans des biens immobiliers à louer.,Patrimoine,Gestionnaire Secteur,Ulis
+Fonds propres,Capitaux propres d'une entreprise pour financer des projets.,Patrimoine,Gestionnaire Secteur,Ulis
+Bailleur,Organisme ou entreprise qui met des logements à disposition.,Patrimoine,Gestionnaire Secteur,Ulis
+Gestionnaire,Personne ou entité qui administre des biens immobiliers.,Patrimoine,Gestionnaire Secteur,Ulis
+Patrimoine,Ensemble des biens immobiliers appartenant à un bailleur.,Patrimoine,Gestionnaire Secteur,Ulis
+Charge locative,Charges liées à l'usage des parties communes d'un immeuble.,Patrimoine,Gestionnaire Secteur,Ulis
+Surface Habitable,La surface habitable est la superficie d'un logement utilisable pour y vivre hors murs ou caves et garages.,Patrimoine, Gesionnaire Secteur, Ulis
+Surface Corrigée,La surface corrigée est une mesure pondérée tenant compte de la surface réelle et des caractéristiques du logement comme le confort ou la localisation.,Patrimoine, Gesionnaire Secteur, Ulis
+Vacance Stratégique, Un bien vacant peut l'être de manière volontaire pour différentes raisons (Etude/Sinistre/Démolition/Dommage Ouvrage/Autre).,Patrimoine, Gesionnaire Secteur, Ulis
+ESI,"Numéro permettant de situer un bien dans l'arborescence SIA. Un logement peut être situé dans une arborescence à 5 niveaux maximum : Residence/Lot de logements (regroupés par caractéristiques communes), Immeuble, Porte d'entrée, Logement",Patrimoine,Gestionnaire Secteur,Ulis
+Prêt Locatif Aidé d'Intégration (PLAI),Prêt Locatif Aidé d'Intégration pour financer le logement social.,Patrimoine,Gestionnaire Secteur,Ulis
+Prêt Locatif Social (PLS),Prêt Locatif Social pour logements intermédiaires.,Patrimoine,Gestionnaire Secteur,Ulis
+Plan Local d'Urbanisme(PLU),Plan Local d'Urbanisme définissant les règles de construction.,Patrimoine,Gestionnaire Secteur,Ulis
+Surface Utile,"La surface utile désigne la surface totale d'un logement, incluant toutes les pièces utilisables, mais excluant les murs, cloisons, escaliers et espaces non habitables (comme les balcons ou les caves).",Patrimoine,Gestionnaire Secteur,Ulis
