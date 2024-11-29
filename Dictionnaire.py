@@ -357,23 +357,34 @@ dictionnaire = chargement_brut_dictionnaire()
 # Interface utilisateur Streamlit
 st.title("Dictionnaire de Données")
 
-# Liste déroulante initiale vide
-placeholder_text = "Saisissez un terme ou choisissez dans la liste"
-mots_suggérés = sorted(dictionnaire.keys())  # Liste triée des mots
-selection = st.selectbox(
-    "Suggestions :", 
-    options=[""] + mots_suggérés,  # Ajout d'une option vide par défaut
-    format_func=lambda x: x if x else placeholder_text  # Texte affiché si rien n'est sélectionné
-)
+# Saisie du texte utilisateur
+texte_saisi = st.text_input("Que cherchez-vous ?", "").strip().lower()
 
-# Afficher les détails du mot sélectionné
-if selection:
-    if selection in dictionnaire:
-        details = dictionnaire[selection]
-        st.subheader(f"Définition de **{selection}**")
-        st.write(f"**Définition :** {details['definition']}")
-        st.write(f"**Responsable :** {details['responsable']}")
-        st.write(f"**Origine :** {details['origine']}")
-        st.write(f"**Source :** {details['source']}")
+# Liste des mots suggérés basée sur la saisie
+texte_saisi_sans_accents = supprimer_accents(texte_saisi)
+mots_suggérés = [
+    mot for mot in dictionnaire if texte_saisi_sans_accents in supprimer_accents(mot).lower()
+]
+
+# Si des suggestions sont disponibles, afficher une liste déroulante
+if mots_suggérés:
+    mot_selectionne = st.selectbox(
+        "Suggestions :", 
+        options=[""] + mots_suggérés,  # Option vide par défaut
+        format_func=lambda x: x if x else "Saisissez un terme ou choisissez dans la liste"  # Texte par défaut
+    )
 else:
-    st.info("Aucun terme sélectionné.")
+    mot_selectionne = ""
+
+# Affichage des détails pour le mot sélectionné
+if mot_selectionne:
+    details = dictionnaire[mot_selectionne]
+    st.subheader(f"Définition de **{mot_selectionne}**")
+    st.write(f"**Définition :** {details['definition']}")
+    st.write(f"**Responsable :** {details['responsable']}")
+    st.write(f"**Origine :** {details['origine']}")
+    st.write(f"**Source :** {details['source']}")
+
+# Si aucun mot sélectionné, afficher un message informatif
+if not texte_saisi:
+    st.info("Veuillez entrer un terme à rechercher.")
