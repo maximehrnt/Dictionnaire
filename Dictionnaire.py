@@ -1,17 +1,5 @@
 from unicodedata import normalize, category
-from tkinter import Tk, Label, Listbox, Entry
-from tkinter import ttk
-from PIL import Image, ImageTk
-import sys
-import os
-
-# Obtenir le chemin correct pour les fichiers en fonction de l'environnement
-def chemin_relatif(fichier):
-    if getattr(sys, 'frozen', False):  # Cas de l'exécutable compilé
-        base_path = sys._MEIPASS  # Répertoire temporaire PyInstaller
-    else:
-        base_path = os.path.abspath(".")  # Répertoire courant en mode développement
-    return os.path.join(base_path, fichier)
+import streamlit as st
 
 # Chargement des données depuis la génération automatique du CSV
 def chargement_brut_dictionnaire():
@@ -363,41 +351,8 @@ def chargement_brut_dictionnaire():
     return dictionnaire
 
 
-# Fonction pour supprimer les accents d'une chaîne
-def supprimer_accents(chaine):
-    return ''.join(
-        c for c in normalize('NFD', chaine) if category(c) != 'Mn'
-    )
 
-# Fonction pour rechercher des mots correspondant au texte saisi
-def rechercher_mots(event): 
-    texte_saisi = barre_recherche.get().strip().lower()
-    texte_saisi_sans_accents = supprimer_accents(texte_saisi)
 
-    if not texte_saisi:
-        liste_suggestions.delete(0, 'end')
-        liste_suggestions.place_forget()
-        label_definition.config(text="")
-        return
-
-    mots_suggérés = [
-        mot for mot in dictionnaire 
-        if texte_saisi_sans_accents in supprimer_accents(mot).lower()
-    ]
-
-    liste_suggestions.delete(0, 'end')
-    if mots_suggérés:
-        for mot in mots_suggérés:
-            liste_suggestions.insert('end', mot)
-
-        max_lignes = 5
-        hauteur = min(len(mots_suggérés), max_lignes)
-        liste_suggestions.configure(height=hauteur)
-        liste_suggestions.place(relx=0.5, rely=0.35, anchor="center")
-    else:
-        liste_suggestions.place_forget()
-
-    label_definition.config(text="")
 
 # Fonction pour afficher la définition d'un mot sélectionné
 def afficher_definition(event):
@@ -423,31 +378,32 @@ def afficher_definition(event):
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
-# Création de l'interface graphique
-root = Tk()
-root.title("Dictionnaire de données")
-root.geometry("800x600")
-root.configure(background="lightblue")
 
-# Affichage du logo
-logo_img = Image.open(chemin_relatif('Logo.png'))
-logo_img = logo_img.resize((300, 200), Image.Resampling.LANCZOS)
-logo_tk = ImageTk.PhotoImage(logo_img)
+# Barre de recherche
+texte_saisi = st.text_input("Que cherchez-vous ?", "").strip().lower()
 
-label_logo = Label(root, image=logo_tk, background="lightblue")
-label_logo.place(relx=0.5, rely=0.1, anchor="center")
+# Si du texte est saisi, afficher les résultats correspondants
+if texte_saisi:
+    texte_saisi_sans_accents = supprimer_accents(texte_saisi)
 
-label_question = ttk.Label(root, text="Que cherchez-vous ?", font=("Arial", 16), background="lightblue")
-label_question.place(relx=0.49, rely=0.2, anchor="e")
+    # Rechercher les mots correspondants
+    mots_suggérés = [
+        mot for mot in dictionnaire
+        if texte_saisi_sans_accents in supprimer_accents(mot).lower()
+    ]
 
-barre_recherche = ttk.Entry(root, font=("Arial", 14))
-barre_recherche.place(relx=0.51, rely=0.2, anchor="w")
-
-liste_suggestions = Listbox(root, font=("Arial", 14), background="lightblue", width=40)
-label_definition = ttk.Label(root, text="", font=("Arial", 14), wraplength=650, justify="left", background="lightblue")
-label_definition.place(relx=0.1, rely=0.5)
-
-barre_recherche.bind("<KeyRelease>", rechercher_mots)
-liste_suggestions.bind("<<ListboxSelect>>", afficher_definition)
-
-root.mainloop()
+    if mots_suggérés:
+        # Liste déroulante pour afficher les suggestions
+        mot_selectionne = st.selectbox("Suggestions :", mots_suggérés)
+        if mot_selectionne:
+            # Afficher les détails du mot sélectionné
+            details = dictionnaire[mot_selectionne]
+            st.subheader(f"Définition de **{mot_selectionne}**")
+            st.write(f"**Définition :** {details['definition']}")
+            st.write(f"**Responsable :** {details['responsable']}")
+            st.write(f"**Origine :** {details['origine']}")
+            st.write(f"**Source :** {details['source']}")
+    else:
+        st.warning("Aucun mot correspondant trouvé.")
+else:
+    st.info("Veuillez entrer un terme à rechercher.")
