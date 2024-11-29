@@ -365,7 +365,7 @@ dictionnaire = chargement_brut_dictionnaire()
 st.title("Dictionnaire de Données")
 
 # Liste déroulante initiale vide
-placeholder_text = "Saisissez un terme ou choisissez dans la liste"
+placeholder_text = ""
 mots_suggérés = sorted(dictionnaire.keys())  # Liste triée des mots
 selection = st.selectbox(
     "Comment puis je vous aider ? :", 
