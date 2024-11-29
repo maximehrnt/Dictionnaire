@@ -352,32 +352,17 @@ def chargement_brut_dictionnaire():
 
 
 
-
-
-# Fonction pour afficher la définition d'un mot sélectionné
-def afficher_definition(event):
-    selection = liste_suggestions.curselection()
-    if selection:
-        mot_selectionne = liste_suggestions.get(selection)
-        barre_recherche.delete(0, 'end')
-        barre_recherche.insert(0, mot_selectionne)
-
-        details = dictionnaire.get(mot_selectionne, {})
-        definition = details.get("definition", "Définition non-renseignée.")
-        responsable = details.get("responsable", "Responsable non-renseigné.")
-        origine = details.get("origine", "Origine non-renseignée.")
-        source = details.get("source", "Source non-renseignée.")
-        texte_affiche = (
-            f"Définition : {definition}\n\n\n"
-            f"Responsable donnée : {responsable}\n\n"
-            f"Origine de la donnée : {origine}\n\n"
-            f"Source référence : {source}"
-        )
-        label_definition.config(text=texte_affiche)
+# Fonction pour supprimer les accents d'une chaîne
+def supprimer_accents(chaine):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', chaine) if unicodedata.category(c) != 'Mn'
+    )
 
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
+# Interface utilisateur Streamlit
+st.title("Dictionnaire de Données")
 
 # Barre de recherche
 texte_saisi = st.text_input("Que cherchez-vous ?", "").strip().lower()
@@ -406,4 +391,5 @@ if texte_saisi:
     else:
         st.warning("Aucun mot correspondant trouvé.")
 else:
+    st.info("Veuillez entrer un terme à rechercher.")
     st.info("Veuillez entrer un terme à rechercher.")
