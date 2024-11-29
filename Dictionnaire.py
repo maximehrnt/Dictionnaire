@@ -1,4 +1,4 @@
-from unicodedata import normalize, category
+from unicodedata
 import streamlit as st
 
 # Chargement des données depuis la génération automatique du CSV
@@ -352,10 +352,11 @@ def chargement_brut_dictionnaire():
 
 
 
-# Fonction pour supprimer les accents d'une chaîne
+
 def supprimer_accents(chaine):
     return ''.join(
-        c for c in unicodedata.normalize('NFD', chaine) if unicodedata.category(c) != 'Mn'
+        c for c in unicodedata.normalize('NFD', chaine) 
+        if unicodedata.category(c) != 'Mn'
     )
 
 # Chargement des données
@@ -391,5 +392,4 @@ if texte_saisi:
     else:
         st.warning("Aucun mot correspondant trouvé.")
 else:
-    st.info("Veuillez entrer un terme à rechercher.")
     st.info("Veuillez entrer un terme à rechercher.")
