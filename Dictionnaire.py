@@ -1,4 +1,4 @@
-rom unicodedata import normalize, category
+from unicodedata import normalize, category
 import unicodedata
 import streamlit as st
 
