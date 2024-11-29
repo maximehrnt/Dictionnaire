@@ -350,7 +350,13 @@ def chargement_brut_dictionnaire():
         },
     }
     return dictionnaire
-
+        
+def supprimer_accents(chaine):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', chaine) 
+        if unicodedata.category(c) != 'Mn'
+    )
+        
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
