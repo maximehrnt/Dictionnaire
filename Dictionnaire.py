@@ -366,31 +366,15 @@ dictionnaire = chargement_brut_dictionnaire()
 # Interface utilisateur Streamlit
 st.title("Dictionnaire de Données")
 
-# Barre de recherche
-texte_saisi = st.text_input("Que cherchez-vous ?", "").strip().lower()
+# Liste déroulante avec toutes les options disponibles
+mots_suggérés = sorted(dictionnaire.keys())  # Tri pour un affichage ordonné
+mot_selectionne = st.selectbox("Choisissez un terme :", mots_suggérés)
 
-# Si du texte est saisi, afficher les résultats correspondants
-if texte_saisi:
-    texte_saisi_sans_accents = supprimer_accents(texte_saisi)
-
-    # Rechercher les mots correspondants
-    mots_suggérés = [
-        mot for mot in dictionnaire
-        if texte_saisi_sans_accents in supprimer_accents(mot).lower()
-    ]
-
-    if mots_suggérés:
-        # Liste déroulante pour afficher les suggestions
-        mot_selectionne = st.selectbox("Suggestions :", mots_suggérés)
-        if mot_selectionne:
-            # Afficher les détails du mot sélectionné
-            details = dictionnaire[mot_selectionne]
-            st.subheader(f"Définition de **{mot_selectionne}**")
-            st.write(f"**Définition :** {details['definition']}")
-            st.write(f"**Responsable :** {details['responsable']}")
-            st.write(f"**Origine :** {details['origine']}")
-            st.write(f"**Source :** {details['source']}")
-    else:
-        st.warning("Aucun mot correspondant trouvé.")
-else:
-    st.info("Veuillez entrer un terme à rechercher.")
+# Afficher les détails du mot sélectionné
+if mot_selectionne:
+    details = dictionnaire[mot_selectionne]
+    st.subheader(f"Définition de **{mot_selectionne}**")
+    st.write(f"**Définition :** {details['definition']}")
+    st.write(f"**Responsable :** {details['responsable']}")
+    st.write(f"**Origine :** {details['origine']}")
+    st.write(f"**Source :** {details['source']}")
