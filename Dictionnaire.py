@@ -351,30 +351,29 @@ def chargement_brut_dictionnaire():
     }
     return dictionnaire
 
-
-
-
-def supprimer_accents(chaine):
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', chaine) 
-        if unicodedata.category(c) != 'Mn'
-    )
-
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
 # Interface utilisateur Streamlit
 st.title("Dictionnaire de Données")
 
-# Liste déroulante avec toutes les options disponibles
-mots_suggérés = sorted(dictionnaire.keys())  # Tri pour un affichage ordonné
-mot_selectionne = st.selectbox("Choisissez un terme :", mots_suggérés)
+# Liste déroulante initiale vide
+placeholder_text = "Saisissez un terme ou choisissez dans la liste"
+mots_suggérés = sorted(dictionnaire.keys())  # Liste triée des mots
+selection = st.selectbox(
+    "Suggestions :", 
+    options=[""] + mots_suggérés,  # Ajout d'une option vide par défaut
+    format_func=lambda x: x if x else placeholder_text  # Texte affiché si rien n'est sélectionné
+)
 
 # Afficher les détails du mot sélectionné
-if mot_selectionne:
-    details = dictionnaire[mot_selectionne]
-    st.subheader(f"Définition de **{mot_selectionne}**")
-    st.write(f"**Définition :** {details['definition']}")
-    st.write(f"**Responsable :** {details['responsable']}")
-    st.write(f"**Origine :** {details['origine']}")
-    st.write(f"**Source :** {details['source']}")
+if selection:
+    if selection in dictionnaire:
+        details = dictionnaire[selection]
+        st.subheader(f"Définition de **{selection}**")
+        st.write(f"**Définition :** {details['definition']}")
+        st.write(f"**Responsable :** {details['responsable']}")
+        st.write(f"**Origine :** {details['origine']}")
+        st.write(f"**Source :** {details['source']}")
+else:
+    st.info("Aucun terme sélectionné.")
