@@ -1,4 +1,5 @@
-from unicodedata
+from unicodedata import normalize, category
+import unicodedata
 import streamlit as st
 
 # Chargement des données depuis la génération automatique du CSV
