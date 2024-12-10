@@ -10,7 +10,7 @@ def supprimer_accents(chaine):
 
 # Chargement des données depuis la génération automatique du CSV
 def chargement_brut_dictionnaire():
-    dictionnaire = {
+    return {
         "Logement": {
             "definition": "Unité d'habitation destinée à être occupée par une ou plusieurs personnes.",
             "responsable": "Patrimoine",
@@ -31,7 +31,6 @@ def chargement_brut_dictionnaire():
         },
         # Ajoutez les autres termes ici
     }
-    return dictionnaire
 
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
@@ -52,21 +51,27 @@ if input_text:
 
     if suggestions:
         st.subheader("Suggestions")
+        # Afficher chaque suggestion dans une carte
         for mot in suggestions:
             definition = dictionnaire[mot]["definition"]
-            # Afficher un extrait limité de la définition
-            definition_extrait = definition[:100] + ("..." if len(definition) > 100 else "")
             
-            with st.container():
-                st.write(f"**{mot}** : {definition_extrait}")
-                if st.button(f"Afficher {mot}", key=f"btn_{mot}"):
-                    # Affichage des détails du mot sélectionné
-                    details = dictionnaire[mot]
-                    st.subheader(f"Définition de **{mot}**")
-                    st.write(f"**Définition :** {details['definition']}")
-                    st.write(f"**Responsable :** {details['responsable']}")
-                    st.write(f"**Origine :** {details['origine']}")
-                    st.write(f"**Source :** {details['source']}")
+            # Créer une carte pour chaque suggestion
+            st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                    background-color: #f9f9f9;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+                ">
+                    <h4 style="margin: 0; color: #333;">{mot}</h4>
+                    <p style="margin: 5px 0 0; font-size: 14px; color: #555;">{definition[:150]}{'...' if len(definition) > 150 else ''}</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
     else:
         st.info("Aucune suggestion trouvée.")
 else:
