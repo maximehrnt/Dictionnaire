@@ -371,7 +371,7 @@ if input_text:
     suggestions = [
         mot for mot in dictionnaire.keys()
         if input_text_normalized in supprimer_accents(mot).lower()
-    ][:5]  # Limiter à 5 suggestions
+    ][:3]  # Limiter à 5 suggestions
 
     if suggestions:
         st.subheader("Suggestions")
