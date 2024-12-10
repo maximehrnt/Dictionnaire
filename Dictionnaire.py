@@ -10,353 +10,91 @@ def supprimer_accents(chaine):
 
 # Chargement des données depuis la génération automatique du CSV
 def chargement_brut_dictionnaire():
-        
     dictionnaire = {
-        "Logement": {
-            "definition": "Unité d'habitation destinée à être occupée par une ou plusieurs personnes.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
+        "Surface corrigée": {
+            "definition": "La surface corrigée est une mesure pondérée tenant compte de la surface réelle et des caractéristiques du logement comme le confort ou la localisation.",
+            "regles_de_gestion": "Tout lot maison ou appartement a une surface utile ou une surface corrigée. Aucun lot n'a à la fois une surface utile et une surface corrigée actives",
+            "plan_de_controle": "P4, P5",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Secteur ou Gestionnaire Locatif",
             "source": "Ulis",
-        },
-        "Locataire": {
-            "definition": "Personne qui occupe un logement contre paiement d'un loyer.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Loyer": {
-            "definition": "Somme d'argent versée périodiquement par le locataire au propriétaire.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Bail": {
-            "definition": "Contrat qui lie un locataire et un propriétaire pour un logement.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Quittance": {
-            "definition": "Reçu délivré pour attester du paiement d'un loyer.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Caution": {
-            "definition": "Somme d'argent déposée en garantie au début d'un bail.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Charges": {
-            "definition": "Coût des services associés au logement (eau, chauffage, etc.).",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Immeuble": {
-            "definition": "Bâtiment regroupant plusieurs logements.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Résidence": {
-            "definition": "Ensemble de logements regroupés en une même localisation.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Appartement": {
-            "definition": "Logement composé de plusieurs pièces dans un immeuble.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Studio": {
-            "definition": "Petit appartement d'une seule pièce avec commodités.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "T1": {
-            "definition": "Appartement avec une chambre à coucher, salon et cuisine.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "T2": {
-            "definition": "Appartement avec deux chambres à coucher, salon et cuisine.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "T3": {
-            "definition": "Appartement avec trois chambres à coucher, salon et cuisine.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "T4": {
-            "definition": "Appartement avec quatre chambres à coucher, salon et cuisine.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "T5": {
-            "definition": "Appartement avec cinq chambres à coucher, salon et cuisine.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "T6": {
-            "definition": "Appartement avec six chambres à coucher, salon et cuisine.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Maison": {
-            "definition": "Logement individuel souvent destiné à une seule famille.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Villa": {
-            "definition": "Maison de standing généralement entourée d'un jardin.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Loft": {
-            "definition": "Logement atypique souvent aménagé dans un ancien bâtiment industriel.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Garage": {
-            "definition": "Espace couvert destiné au stationnement d'un véhicule.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Parking": {
-            "definition": "Espace ouvert ou couvert destiné au stationnement.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Terrain": {
-            "definition": "Terrain destiné à la construction d'un logement ou autre.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Lotissement": {
-            "definition": "Ensemble de terrains ou bâtiments regroupés pour être aménagés.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Syndic": {
-            "definition": "Organisme en charge de la gestion d'un immeuble.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Co-propriété": {
-            "definition": "Propriété partagée entre plusieurs copropriétaires.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Entretien": {
-            "definition": "Action de maintenir un bâtiment ou équipement en bon état.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Réhabilitation": {
-            "definition": "Travaux visant à remettre un bâtiment en bon état.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Rénovation": {
-            "definition": "Travaux destinés à moderniser un bâtiment.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Démolition": {
-            "definition": "Action de détruire un bâtiment ou une structure.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Construction": {
-            "definition": "Action de bâtir une structure ou un bâtiment.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Urbanisme": {
-            "definition": "Discipline qui organise l'utilisation des sols et des espaces.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Aménagement": {
-            "definition": "Action de modifier ou structurer un espace urbain ou rural.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Concession": {
-            "definition": "Contrat ou accord pour l'utilisation d'un espace ou bien.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Prêt locatif": {
-            "definition": "Crédit spécifique pour financer la location d'un logement.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Subvention": {
-            "definition": "Aide financière accordée pour soutenir un projet de logement.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Agence Nationale de l'Habitat(ANAH)": {
-            "definition": "Agence Nationale de l'Habitat, dédiée à l'amélioration des logements.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Caisse d'Allocations Familiales(CAF)": {
-            "definition": "Caisse d'Allocations Familiales, apportant des aides financières.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Aide Personnalisée au Logement (APL)": {
-            "definition": "Aide personnalisée au logement pour réduire le coût du loyer.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Prêt Locatif Aidé d'Intégration (PLAI)": {
-            "definition": "Prêt Locatif Aidé d'Intégration pour financer le logement social.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Prêt Locatif Social (PLS)": {
-            "definition": "Prêt Locatif Social pour logements intermédiaires.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Assurance": {
-            "definition": "Contrat assurant contre les risques pour un logement.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Défiscalisation": {
-            "definition": "Avantage fiscal accordé pour investir dans l'immobilier.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Investissement locatif": {
-            "definition": "Action de placer de l'argent dans des biens immobiliers à louer.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Fonds propres": {
-            "definition": "Capitaux propres d'une entreprise pour financer des projets.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Bailleur": {
-            "definition": "Organisme ou entreprise qui met des logements à disposition.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Gestionnaire": {
-            "definition": "Personne ou entité qui administre des biens immobiliers.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Patrimoine": {
-            "definition": "Ensemble des biens immobiliers appartenant à un bailleur.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Charge locative": {
-            "definition": "Charges liées à l'usage des parties communes d'un immeuble.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
+            "chemin": "Patrimoine/Descriptif Patrimoine/Descriptif/Recherche liste patrimoine/Code ESI",
+            "champ_ulis": "PA_MONCODE"
         },
         "Surface Habitable": {
             "definition": "La surface habitable est la superficie d'un logement utilisable pour y vivre hors murs ou caves et garages.",
-            "responsable": "Patrimoine",
-            "origine": " Gesionnaire Secteur",
-            "source": " Ulis",
-        },
-        "Surface Corrigée": {
-            "definition": "La surface corrigée est une mesure pondérée tenant compte de la surface réelle et des caractéristiques du logement comme le confort ou la localisation.",
-            "responsable": "Patrimoine",
-            "origine": " Gesionnaire Secteur",
-            "source": " Ulis",
-        },
-        "Vacance Stratégique": {
-            "definition": " Un bien vacant peut l'être de manière volontaire pour différentes raisons (Etude/Sinistre/Démolition/Dommage Ouvrage/Autre).",
-            "responsable": "Patrimoine",
-            "origine": " Gesionnaire Secteur",
-            "source": " Ulis",
-        },
-        "ESI": {
-            "definition": "Numéro permettant de situer un bien dans l'arborescence SIA. Un logement peut être situé dans une arborescence à 5 niveaux maximum : Residence/Lot de logements (regroupés par caractéristiques communes), Immeuble, Porte d'entrée, Logement",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
+            "regles_de_gestion": "Tout lot a une surface habitable",
+            "plan_de_controle": "P3",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Secteur ou Gestionnaire Locatif",
             "source": "Ulis",
+            "chemin": "Patrimoine/Descriptif Patrimoine/Descriptif/Recherche liste patrimoine/Code ESI",
+            "champ_ulis": "PA_MONCODE"
         },
-        "Prêt Locatif Aidé d'Intégration (PLAI)": {
-            "definition": "Prêt Locatif Aidé d'Intégration pour financer le logement social.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Prêt Locatif Social (PLS)": {
-            "definition": "Prêt Locatif Social pour logements intermédiaires.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Plan Local d'Urbanisme(PLU)": {
-            "definition": "Plan Local d'Urbanisme définissant les règles de construction.",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
-            "source": "Ulis",
-        },
-        "Surface Utile": {
+        "Surface utile": {
             "definition": "La surface utile désigne la surface totale d'un logement, incluant toutes les pièces utilisables, mais excluant les murs, cloisons, escaliers et espaces non habitables (comme les balcons ou les caves).",
-            "responsable": "Patrimoine",
-            "origine": "Gestionnaire Secteur",
+            "regles_de_gestion": "Tout lot maison ou appartement a une surface utile ou une surface corrigée. Aucun lot n'a à la fois une surface utile et une surface corrigée actives",
+            "plan_de_controle": "P4, P5",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Secteur ou Gestionnaire Locatif",
             "source": "Ulis",
+            "chemin": "Patrimoine/Descriptif Patrimoine/Descriptif/Recherche liste patrimoine/Code ESI",
+            "champ_ulis": "PA_MONCODE"
         },
+        "Adresse": {
+            "definition": "Emplacement géographique d'un logement ou d'une propriété, comprenant les informations suivantes : numéro de rue, le nom de la rue, la ville, et le code postal.",
+            "regles_de_gestion": "Tous les lots ont un code postal présent dans le référentiel. Tous les lots ont un code commune INSEE présent dans le référentiel",
+            "plan_de_controle": "P1, P2",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Secteur ou Gestionnaire Locatif",
+            "source": "Ulis",
+            "chemin": "Patrimoine/Descriptif Patrimoine/Descriptif/Recherche liste patrimoine/Code ESI",
+            "champ_ulis": "PA_MONCODE"
+        },
+        "Code ESI": {
+            "definition": "Le code ESI est l'identifiant permettant de codifier le patrimoine. Il est composé de 5 niveaux de hiérarchie maximum : Lotissement, Ensemble similaires (ex: même année), Immeuble, Porte, Appartement.",
+            "regles_de_gestion": "Le 8ème caractère est cohérent avec sa nature",
+            "plan_de_controle": "P10, P11",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Secteur ou Gestionnaire Locatif",
+            "source": "Ulis",
+            "chemin": "Patrimoine/Descriptif Patrimoine/Descriptif/Recherche liste patrimoine",
+            "champ_ulis": "PA_MONCODE"
+        },
+        "Typologie (T2, T3…)​": {
+            "definition": "Définit la taille d'un logement en fonction de son nombre de pièces. Un T3 est un appartement avec trois chambres à coucher, salon et cuisine.",
+            "regles_de_gestion": "Tous les lots ont une typologie. Typologie supérieure > T7 rare, à valider au cas par cas",
+            "plan_de_controle": "P14",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Secteur ou Gestionnaire Locatif",
+            "source": "Ulis",
+            "chemin": "Patrimoine/Descriptif Patrimoine/Descriptif/Recherche liste patrimoine",
+            "champ_ulis": "PA_MONCODE"
+        },
+        "Date de naissance signataire de bail": {
+            "definition": "La date de naissance d'un tiers est saisie lors de la signature d'un bail.",
+            "regles_de_gestion": "L'âge à la signature du bail est compris entre 16 ans et 109 ans. Son âge actuel n'est pas supérieur à 109 ans",
+            "plan_de_controle": "C8, C17",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Locatif",
+            "source": "Ulis",
+            "chemin": "Tiers et Organisation/Personne Physique/ R. personne physique",
+            "champ_ulis": "TO_MONCODE"
+        },
+        "Numéro Siret": {
+            "definition": "Un numéro SIRET correspond à un identifiant unique attribué à une entreprise ou organisation, permettant de la distinguer légalement dans les bases de données administratives. Il se compose de 14 chiffres, dont le numéro SIREN à 9 chiffres suivi d'un numéro NIC à 5 chiffres, pour identifier précisément l'entité gestionnaire des biens locatifs.",
+            "regles_de_gestion": "Un SIRET doit être renseigné pour les tiers avec une activité. Tous les siret ont 14 caractères",
+            "plan_de_controle": "C9, C7",
+            "responsable": "Antoine Dupont",
+            "origine": "Gestionnaire Locatif",
+            "source": "Ulis",
+            "chemin": "Tiers et Organisation/Personne Physique/ R. personne physique",
+            "champ_ulis": "TO_MONCODE"
+        }
     }
     return dictionnaire
-    # Chargement des données
+
+# Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
 # Interface utilisateur Streamlit
