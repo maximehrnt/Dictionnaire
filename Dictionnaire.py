@@ -51,22 +51,26 @@ if input_text:
 
     if suggestions:
         st.subheader("Suggestions")
-        # Afficher chaque suggestion dans une carte cliquable
-        for mot in suggestions:
+        
+        # Affichage en colonnes
+        cols = st.columns(len(suggestions))  # Une colonne par suggestion
+
+        for col, mot in zip(cols, suggestions):
             definition = dictionnaire[mot]["definition"]
             short_definition = (
                 definition[:100] + "..." if len(definition) > 100 else definition
             )  # Limite la taille de la définition
 
-            # Bouton en mode carte
-            if st.button(f"{mot}\n\n{short_definition}", key=mot):
-                # Afficher les détails complets du mot cliqué
-                details = dictionnaire[mot]
-                st.subheader(f"Détails pour : {mot}")
-                st.write(f"**Définition :** {details['definition']}")
-                st.write(f"**Responsable :** {details['responsable']}")
-                st.write(f"**Origine :** {details['origine']}")
-                st.write(f"**Source :** {details['source']}")
+            # Carte cliquable
+            with col:
+                if st.button(f"{mot}\n\n{short_definition}", key=mot):
+                    # Afficher les détails complets du mot cliqué
+                    details = dictionnaire[mot]
+                    st.subheader(f"Détails pour : {mot}")
+                    st.write(f"**Définition :** {details['definition']}")
+                    st.write(f"**Responsable :** {details['responsable']}")
+                    st.write(f"**Origine :** {details['origine']}")
+                    st.write(f"**Source :** {details['source']}")
     else:
         st.info("Aucune suggestion trouvée.")
 else:
