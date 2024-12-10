@@ -134,9 +134,13 @@ if input_text:
             st.markdown("---")
             st.markdown(f"### Détails pour : **{mot_selectionne}**")
             st.write(f"**Définition :** {details['definition']}")
+            st.write(f"**Règles de Gestion :** {details['regles_de_gestion']}")
+            st.write(f"**Plan de Controle :** {details['plan_de_controle']}")
             st.write(f"**Responsable :** {details['responsable']}")
             st.write(f"**Origine :** {details['origine']}")
             st.write(f"**Source :** {details['source']}")
+            st.write(f"**Chemin :** {details['chemin']}")
+            st.write(f"**Champ Ulis :** {details['champ_ulis']}")
     else:
         st.info("Aucune suggestion trouvée.")
 else:
