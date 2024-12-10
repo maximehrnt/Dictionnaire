@@ -97,6 +97,10 @@ def chargement_brut_dictionnaire():
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
+# Affichge logo
+st.image("Logo.png", use_column_width=True)  # Ajustez la largeur pour l'adapter à votre écran
+
+
 # Interface utilisateur Streamlit
 st.title("Dictionnaire de Données")
 
