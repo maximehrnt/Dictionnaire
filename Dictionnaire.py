@@ -51,27 +51,19 @@ if input_text:
 
     if suggestions:
         st.subheader("Suggestions")
-        # Afficher chaque suggestion dans une carte
+        # Afficher chaque suggestion dans une carte cliquable
         for mot in suggestions:
             definition = dictionnaire[mot]["definition"]
-            
-            # Créer une carte pour chaque suggestion
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    padding: 10px;
-                    margin-bottom: 10px;
-                    background-color: #f9f9f9;
-                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-                ">
-                    <h4 style="margin: 0; color: #333;">{mot}</h4>
-                    <p style="margin: 5px 0 0; font-size: 14px; color: #555;">{definition[:150]}{'...' if len(definition) > 150 else ''}</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+
+            # Bouton pour chaque carte
+            if st.button(f"{mot}", key=mot):
+                # Afficher les détails complets du mot cliqué
+                details = dictionnaire[mot]
+                st.subheader(f"Détails pour : {mot}")
+                st.write(f"**Définition :** {details['definition']}")
+                st.write(f"**Responsable :** {details['responsable']}")
+                st.write(f"**Origine :** {details['origine']}")
+                st.write(f"**Source :** {details['source']}")
     else:
         st.info("Aucune suggestion trouvée.")
 else:
