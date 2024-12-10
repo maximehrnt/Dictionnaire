@@ -356,7 +356,7 @@ def chargement_brut_dictionnaire():
         },
     }
     return dictionnaire
-
+    
 # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
@@ -377,26 +377,29 @@ if input_text:
     if suggestions:
         st.subheader("Suggestions")
 
-        # Affichage des cartes en grille horizontale
-        for mot in suggestions:
+        # Gestion de l'affichage des colonnes
+        cols = st.columns(len(suggestions))
+        mot_selectionne = None
+
+        for idx, mot in enumerate(suggestions):
             definition = dictionnaire[mot]["definition"]
             short_definition = (
                 definition[:100] + "..." if len(definition) > 100 else definition
             )  # Limite la taille de la définition
 
-            # Carte cliquable
-            if st.button(
-                f"**{mot}**\n\n{short_definition}", 
-                key=mot,
-                help=f"Cliquez pour afficher les détails de {mot}"  # Info-bulle
-            ):
-                # Afficher les détails complets du mot cliqué
-                details = dictionnaire[mot]
-                st.subheader(f"Détails pour : **{mot}**")
-                st.write(f"**Définition :** {details['definition']}")
-                st.write(f"**Responsable :** {details['responsable']}")
-                st.write(f"**Origine :** {details['origine']}")
-                st.write(f"**Source :** {details['source']}")
+            with cols[idx]:
+                if st.button(f"**{mot}**\n\n{short_definition}", key=mot):
+                    mot_selectionne = mot
+
+        # Affichage des détails au centre si une carte est cliquée
+        if mot_selectionne:
+            details = dictionnaire[mot_selectionne]
+            st.markdown("---")
+            st.markdown(f"### Détails pour : **{mot_selectionne}**")
+            st.write(f"**Définition :** {details['definition']}")
+            st.write(f"**Responsable :** {details['responsable']}")
+            st.write(f"**Origine :** {details['origine']}")
+            st.write(f"**Source :** {details['source']}")
     else:
         st.info("Aucune suggestion trouvée.")
 else:
