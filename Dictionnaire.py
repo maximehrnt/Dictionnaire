@@ -356,15 +356,14 @@ def chargement_brut_dictionnaire():
         },
     }
     return dictionnaire
-    
-# Chargement des données
+    # Chargement des données
 dictionnaire = chargement_brut_dictionnaire()
 
 # Interface utilisateur Streamlit
 st.title("Dictionnaire de Données")
 
-# Champ de saisie
-input_text = st.text_input("Recherchez un terme :", "")
+# Champ de saisie avec rafraîchissement automatique
+input_text = st.text_input("Recherchez un terme :", "", key="input")
 
 # Suggestions basées sur l'entrée utilisateur
 if input_text:
@@ -372,7 +371,7 @@ if input_text:
     suggestions = [
         mot for mot in dictionnaire.keys()
         if input_text_normalized in supprimer_accents(mot).lower()
-    ][:3]  # Limiter à 5 suggestions
+    ][:5]  # Limiter à 5 suggestions
 
     if suggestions:
         st.subheader("Suggestions")
