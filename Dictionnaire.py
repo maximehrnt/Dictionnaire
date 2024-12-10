@@ -98,7 +98,7 @@ def chargement_brut_dictionnaire():
 dictionnaire = chargement_brut_dictionnaire()
 
 # Affichge logo
-st.image("Logo.png", width=300)  # Ajustez la largeur pour l'adapter à votre écran
+st.image("Logo2.png", width=300)  # Ajustez la largeur pour l'adapter à votre écran
 
 
 # Interface utilisateur Streamlit
